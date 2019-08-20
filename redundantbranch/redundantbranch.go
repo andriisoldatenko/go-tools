@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package redundantbranch defines an Analyzer that checks for
+// goto/breack/continue statements that don't affect control flow.
 package redundantbranch
 
 import (
@@ -24,9 +26,14 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
+const Doc = `check for goto/break/continue statements that don't affect control flow
+
+Examples are a break as the last statement in a case clause, a continue as the
+last statement in a loop or a goto jumping to the next statement. We also take into account nested loops and statements.`
+
 var Analyzer = &analysis.Analyzer{
 	Name: "redundantbranch",
-	Doc:  "check for goto/break/continue statements that don't affect control flow",
+	Doc:  Doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
 		inspect.Analyzer,
