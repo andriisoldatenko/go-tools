@@ -8,7 +8,7 @@ might not continue to be filled and maintained in the future.
 A `golang.org/x/tools/analysis` analyzer that finds break/continue/goto
 statements that don't affect control flow. You can look into
 [redundantbranch/testdata](redundantbranch/testdata) for examples of what that
-means. There are sometimes reasons to have such redandancy - it can make it
+means. There are sometimes reasons to have such redundancy - it can make it
 easier to understand a large switch-statement and it can guard against future
 modifications breaking code. So it should be treated as a lint-check and its
 reports should be considered on a case-by-case basis.
